@@ -4,6 +4,8 @@ create database burgers_db;
 
 use burgers_db;
 
+-- Create Burgers Table:
+
 create table burgers(
 	id int auto_increment NOT NULL,
 	burger_name varchar(50) NOT NULL,
