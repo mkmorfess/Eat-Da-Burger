@@ -1,6 +1,7 @@
 var express = require("express");
-var met = require("method-override");
-var body = require("body-parser");
+// var met = require("method-override");
+// var body = require("body-parser");
+var mysql = require("mysql");
 
 var PORT = 3000;
 
@@ -26,4 +27,7 @@ connection.connect(function(err){
 connection.query("SELECT * FROM burgers;")
 
 
-app.listen(PORT);
+app.listen(PORT, function(err){
+	if (err) throw err;
+	console.log("Listening on port number " + PORT)
+});
