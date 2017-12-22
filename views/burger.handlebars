@@ -1,15 +1,47 @@
 
-<ul>
-	{{#each data}}
-		<li><p>{{this.burger_name}}</p></li>
-    <button data-burgerid="{{this.id}}" class="deleteBurg">Devour!</button>
-	{{/each}}
-</ul>
 
-<form id="newBurger" class="button-size">
-  <textarea type="text" name="burger"></textarea>
-  <button type="submit">New Burger</button>
-</form>
+ <div class="jumbotron text-center">
+      <h2>Add A Burger Here:</h2>
+      <form id="newBurger" class="button-size">
+        <input type="text" name="burger">
+        <button type="submit">New Burger</button>
+      </form>
+      </div>
+
+<hr>
+        <h3 class="text-center title">List of Burgers to Devour:</h3>
+
+        <div id="error" class="text-center">
+          
+        </div>
+
+        {{#each data}}
+
+        <div class="col-md-2 text-center">
+          <h4>{{this.burger_name}}</h4>
+          <hr>
+          <button data-burgerid="{{this.id}}" class="deleteBurg">Devour!</button>
+        </div>
+      
+        {{/each}}
+
+      
+<style>
+  .title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .col-md-2 {
+    margin-top: 50px;
+  }
+
+  #error {
+    color: red;
+  }
+</style>
+
+
 
 <script>
 
@@ -18,7 +50,7 @@ $(".deleteBurg").on("click", function(event) {
     var id = $(this).data("burgerid");
 
     
-    $.ajax("/burger/" + id, {
+    $.ajax("/burgers/" + id, {
       type: "DELETE"
     }).then(
       function() {
@@ -38,19 +70,34 @@ $("#newBurger").on("submit", function(event) {
       burgers: $("#newBurger [name=burger]").val().trim()
     };
 
-    console.log(newBurger.burgers + " on Line 22");
-    // console.log(burgers);
+    if (newBurger.burgers.length === 0) {
+      $("#error").html("Please input a burger before attempting to add");
+    }
 
-    
-    $.ajax("/burger", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        
-        location.reload();
-      }
-    );
+    else {
+      $("#error").html("");
+      // console.log(burgers);
+
+      
+      $.ajax("/burgers", {
+        type: "POST",
+        data: newBurger
+      }).then(
+        function() {
+          console.log("created new burger");
+          
+          location.reload();
+        }
+      );
+    }
   });
+
 </script>
+
+<style>
+  
+  .deleteBurg {
+    margin-left: 20px;
+  }
+
+</style>

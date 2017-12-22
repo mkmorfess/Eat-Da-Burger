@@ -30,6 +30,10 @@ connection.connect(function(err){
 });
 
 app.get("/", function(req, res) {
+	res.render("home");
+})
+
+app.get("/burgers", function(req, res) {
 
 	connection.query("SELECT * FROM burgers;", function(err, data){
 		if (err) { 
@@ -40,7 +44,7 @@ app.get("/", function(req, res) {
 
 })
 
-app.post("/burger", function(req, res) {
+app.post("/burgers", function(req, res) {
 	console.log(req.body.burgers);
 
 	connection.query("INSERT INTO burgers (burger_name) VALUES (?);", [req.body.burgers], function(err, data){
@@ -56,7 +60,7 @@ app.post("/burger", function(req, res) {
 })
 
 
-app.delete("/burger/:id", function(req, res) {
+app.delete("/burgers/:id", function(req, res) {
   connection.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function(err, result) {
     if (err) {
     
