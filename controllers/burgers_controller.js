@@ -10,9 +10,11 @@ router.get("/", function(req, res) {
 
 router.get("/burgers", function(req, res) {
   burger.all(function(data) {
-    
-    console.log(data);
-    res.render("burger", data);
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("burger", hbsObject);
   });
 });
 
@@ -23,21 +25,17 @@ router.post("/burgers", function(req, res) {
   });
 });
 
-// router.delete("/burgers/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
+router.delete("/burgers/:id", function(req, res) {
+  var condition = req.params.id;
 
-//   console.log("condition", condition);
-
-//   burger.delete({
-//     sleepy: req.body.sleepy
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  burger.delete([condition], function(result) {
+    if (result.changedRows === 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
 
 
 module.exports = router;

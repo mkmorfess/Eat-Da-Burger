@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $(".deleteBurg").on("click", function(event) {
         var id = $(this).data("burgerid");
-
+        console.log(id);
         
         $.ajax("/burgers/" + id, {
           type: "DELETE"
