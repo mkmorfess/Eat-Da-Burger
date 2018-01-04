@@ -27,11 +27,13 @@ router.post("/burgers", function(req, res) {
 
 router.delete("/burgers/:id", function(req, res) {
   var condition = req.params.id;
-
+  console.log("this works before");
   burger.delete([condition], function(result) {
-    if (result.changedRows === 0) {
+    if (result.affectedRows === 0) {
+      console.log("this works if");
       return res.status(404).end();
     } else {
+      console.log("this works else");
       res.status(200).end();
     }
   });

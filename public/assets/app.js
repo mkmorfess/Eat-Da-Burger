@@ -8,6 +8,7 @@ $(document).ready(function(){
           type: "DELETE"
         }).then(
           function() {
+            
             console.log("deleted id ", id);
             
             location.reload();
