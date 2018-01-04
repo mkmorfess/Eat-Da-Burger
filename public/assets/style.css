@@ -1,0 +1,16 @@
+  .title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .col-md-2 {
+    margin-top: 50px;
+  }
+
+  #error {
+    color: red;
+  }
+  
+  .deleteBurg {
+    margin-left: 20px;
+  }
