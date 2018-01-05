@@ -20,7 +20,8 @@
         <div class="col-md-2 text-center">
           <h4>{{this.burger_name}}</h4>
           <hr>
-          <button data-burgerid="{{this.id}}" class="deleteBurg">Devour!</button>
+          <button data-delburgerid="{{this.id}}" class="deleteBurg">Devour!</button>
+          <a href="/update/{{this.id}}" data-putburgerid="{{this.id}}" class="updateBurg">Update This Burger</a>
         </div>
       
         {{/each}}

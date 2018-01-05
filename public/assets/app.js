@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $(".deleteBurg").on("click", function(event) {
-        var id = $(this).data("burgerid");
+        var id = $(this).data("delburgerid");
         console.log(id);
         
         $.ajax("/burgers/" + id, {
@@ -10,6 +10,22 @@ $(document).ready(function(){
           function() {
             
             console.log("deleted id ", id);
+            
+            location.reload();
+          }
+        );
+      });
+
+    $(".updateBurg").on("click", function(event) {
+        var id = $(this).data("putburgerid");
+        console.log(id);
+        
+        $.ajax("/burgers/" + id, {
+          type: "PUT"
+        }).then(
+          function() {
+            
+            console.log("updated id ", id);
             
             location.reload();
           }

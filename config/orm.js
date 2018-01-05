@@ -28,7 +28,20 @@ var orm = {
 		    }
     		callback(result);
   		});
+  	},
+
+  	update: function(table, colName1, value1, colName2, value2, callback) {
+  		var queryName = "UPDATE " + table + " SET " + colName1 + " = '" + value1 + "' WHERE " + colName2 + " = '" + value2 + "';"
+
+  		connection.query(queryName, function(err, result){
+  			if (err) {
+		    	throw err;
+		    }
+    		callback(result);
+  		})
   	}
+
+
 }
 
 module.exports = orm;
