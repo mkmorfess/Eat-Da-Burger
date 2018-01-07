@@ -33,7 +33,7 @@ app.use("/", routes);
 // });
 
 
-app.listen(PORT, function(err){
+app.listen(process.env.PORT || PORT, function(err){
 	if (err) throw err;
 	console.log("Listening on port number " + PORT)
 });
