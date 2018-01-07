@@ -32,7 +32,7 @@ router.get("/burgers", function(req, res) {
     // var hbsObject = {
     //   burgers: data
     // };
-
+    //
     
     res.render("burger", hbsObject);
 
