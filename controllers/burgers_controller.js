@@ -10,13 +10,32 @@ router.get("/", function(req, res) {
 
 router.get("/burgers", function(req, res) {
   burger.all(function(data) {
+
     var hbsObject = {
-      burgers: data
-    };
-    console.log(hbsObject);
+      devoured: [],
+      notDevoured: []
+    }
+
+    var devoured = [];
+    var notDevoured = [];
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].devoured) {
+        hbsObject.devoured.push(data[i]);
+      }
+      else {
+        hbsObject.notDevoured.push(data[i]);
+      }
+    }
+
+    console.log("Devoured: " + hbsObject.devoured + "Not Devoured: " + hbsObject.notDevoured)
+    // var hbsObject = {
+    //   burgers: data
+    // };
 
     
     res.render("burger", hbsObject);
+
   });
 });
 
