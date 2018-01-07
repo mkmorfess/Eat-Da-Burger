@@ -11,6 +11,11 @@
     color: red;
   }
   
-  .deleteBurg {
-    margin-left: 20px;
+  .notdevoured {
+    float: left;
+    clear: both;
+  }
+
+  .devoured {
+    float: right;
   }

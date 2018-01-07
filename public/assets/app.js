@@ -51,36 +51,23 @@ $(document).ready(function(){
 
 
 
-
-    $("#updateBurger").on("submit", function(event) {
+   $(".updateBurg").on("click", function(event) {
+        var id = $(this).data("putburgerid");
+        console.log(id);
         
-        event.preventDefault();
-
-        var updateBurger = {
-          burgers: $("#updateBurger [name=burger]").val().trim()
-        };
-
-        if (updateBurger.burgers.length === 0) {
-          $("#error").html("Please input a burger before attempting to add");
-        }
-
-        else {
-          $("#error").html("");
-          // console.log(burgers);
+        $.ajax("/burgers/" + id, {
+          type: "PUT"
+        }).then(
+          function() {
+            
+            console.log("updated id ", id);
+            
+            location.reload();
+          }
+        );
 
         
-          $.ajax("/burgers/" + id, {
-            type: "PUT"
-          }).then(
-            function() {
-              
-              console.log("updated id ", id);
-              
-              location.reload();
-            }
-          );
         
-        }
       });
 
 })

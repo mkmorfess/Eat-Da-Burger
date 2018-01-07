@@ -14,6 +14,8 @@ router.get("/burgers", function(req, res) {
       burgers: data
     };
     console.log(hbsObject);
+
+    
     res.render("burger", hbsObject);
   });
 });
@@ -40,10 +42,9 @@ router.delete("/burgers/:id", function(req, res) {
 });
 
 
-router.put("/burgers/update/:id", function(req, res) {
-  var condition = req.params.id;
-  var value = req.body.burger;
-  burger.update([value], [condition], function(result) {
+router.put("/burgers/:id", function(req, res) {
+  var id = req.params.id;
+  burger.update([id], function(result) {
     if (result.affectedRows === 0) {
       
       return res.status(404).end();

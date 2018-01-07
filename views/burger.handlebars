@@ -9,19 +9,29 @@
   </div>
 
 <hr>
-        <h3 class="text-center title">List of Burgers to Devour:</h3>
-
+        <h3 class="col-md-6 title">List of Burgers to Devour:</h3>
+        <h3 class="col-md-6 title devoured">Devoured</h3>
         <div id="error" class="text-center">
           
         </div>
 
-        {{#each burgers}}
+          {{#each burgers}}
 
-        <div class="col-md-2 text-center">
-          <h4>{{this.burger_name}}</h4>
-          <hr>
-          <button data-delburgerid="{{this.id}}" class="deleteBurg">Devour!</button>
-          <a href="/update/{{this.id}}" data-putburgerid="{{this.id}}" class="updateBurg">Update This Burger</a>
-        </div>
-      
-        {{/each}}
+           {{#if burgers.devoured}}
+         
+               <div class="col-md-6 text-center devoured">
+                 <p>{{this.burger_name}}</p>
+               </div>
+
+             
+            {{else}}
+
+             <div class="col-md-6 notdevoured">
+               <p>{{this.burger_name}}
+               <button data-delburgerid="{{this.id}}" class="deleteBurg">Delete</button>
+               <button data-putburgerid="{{this.id}}" class="updateBurg">Devour!</button></p>
+             </div>
+
+           {{/if}}
+       
+         {{/each}}
