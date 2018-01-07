@@ -9,31 +9,40 @@
   </div>
 
 <hr>
-        <h3 class="col-md-6 title">List of Burgers to Devour:</h3>
-        <h3 class="col-md-6 title devoured">Devoured</h3>
+       
+        
         <div id="error" class="text-center">
           
         </div>
 
-          {{#each devoured}}
-         
-               <div class="col-md-6 text-center devoured">
-                 <p>{{this.burger_name}}</p>
-               </div>
 
-          {{/each}}
-
-
+        <div class="col-md-6 text-center notdevoured">
+          <h3>Burgers:</h3>
            {{#each notDevoured}}
 
-             <div class="col-md-6 notdevoured">
+             <div class="row">
                <p>{{this.burger_name}}
                <button data-delburgerid="{{this.id}}" class="deleteBurg">Delete</button>
                <button data-putburgerid="{{this.id}}" class="updateBurg">Devour!</button></p>
              </div>
 
             {{/each}}
+        </div>
+        
+         <div class="col-md-6 text-center devoured">
+         <h3>Burgers Devoured:</h3>
+          {{#each devoured}}
+         
+               <div class="row">
+                 <p>{{this.burger_name}}</p>
+               </div>
+
+          {{/each}}
+          </div>
+
+          
 
            
        
-         
+      
+       

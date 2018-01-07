@@ -28,7 +28,7 @@ router.get("/burgers", function(req, res) {
       }
     }
 
-    console.log("Devoured: " + hbsObject.devoured + "Not Devoured: " + hbsObject.notDevoured)
+    // console.log("Devoured: " + hbsObject.devoured + "Not Devoured: " + hbsObject.notDevoured)
     // var hbsObject = {
     //   burgers: data
     // };

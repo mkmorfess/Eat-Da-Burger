@@ -12,10 +12,9 @@
   }
   
   .notdevoured {
-    float: left;
-    clear: both;
+    
   }
 
   .devoured {
-    float: right;
+    
   }
