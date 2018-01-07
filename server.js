@@ -3,7 +3,7 @@ var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var routes = require("./controllers/burgers_controller.js");
 
-var PORT = 3000;
+var port = 3000;
 
 var app = express();
 
@@ -33,7 +33,7 @@ app.use("/", routes);
 // });
 
 
-app.listen(process.env.PORT || PORT, function(err){
+app.listen(process.env.PORT || port, function(err){
 	if (err) throw err;
-	console.log("Listening on port number " + PORT)
+	console.log("Listening on port number " + port)
 });
